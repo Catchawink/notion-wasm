@@ -1,13 +1,15 @@
 [package]
-name = "notion"
+name = "notion-wasm"
 version = "0.5.1"
 authors = ["Jake Swenson <jake@jakeswenson.com>"]
-edition = "2018"
-repository = "https://github.com/jakeswenson/notion"
+edition = "2021"
 readme = "README.md"
-
+resolver = "2"
 description = "A Notion Api Client"
 license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 serde_json = "1.0"
@@ -20,12 +22,8 @@ default-features = false
 features = ["serde", "clock"]
 
 [dependencies.reqwest]
-version = "0.11"
-features = ["json"]
-
-[dependencies.tokio]
-version = "1"
-features = ["full"]
+version = "0.11.13"
+features = ["json", "stream"]
 
 [dependencies.serde]
 version = "1.0"
@@ -33,7 +31,6 @@ features = ["derive"]
 
 [dev-dependencies]
 cargo-husky = "1"
-wiremock = "0.5.2"
 anyhow = "1.0.40"
 clap = { version = "4.0", features = ["derive"] }
 skim = "0.10.2"
